@@ -32,6 +32,15 @@ h2 {
 	margin: 0 20px;
 	color: #ffffff;
 	text-decoration: none;
+	border-bottom: 2px solid transparent;
+}
+
+a {
+	border-bottom: 2px solid transparent;
+}
+
+a:hover {
+	border-color: white;
 }
 
 /*change style for the p tag*/
@@ -61,4 +70,44 @@ main {
 
 img {
 	margin: 40px 8px 0px 8px;
+}
+
+/*add style for the footer and its children*/
+
+footer {
+	text-transform: uppercase;
+	padding: 0px 20px;
+	background-color: #0D2C40;
+	color: white;
+	font-size: 14px;
+	letter-spacing: .08em;
+	font-weight: 500;
+
+}
+
+footer p {
+	font-family: Raleway;
+}
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+content: " ";
+clear: both;
+height: 0;
+font-size: 0;
+}
+
+.name {
+	color: #F15B31;
+	font-weight: 700;
+}
+
+/*float footer paragraphs to left and right*/
+.copyright {
+	float: left;
+}
+
+.message {
+	float: right;
 }
