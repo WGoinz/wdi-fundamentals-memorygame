@@ -21,6 +21,29 @@ h2 {
 	font-weight: 600;
 	font-size: 20px;
 	text-transform: uppercase;
+
+}
+
+button {
+	font-family: Raleway;
+	color: #0d2c40;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin: 10px auto;
+}
+
+.scoreStyle {
+	background-color: white;
+	color: #0d2c40;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 20px;
+	margin: 10px auto;
+	font-family: Raleway;
+	padding: 3px;
+
 }
 /*change style for navigation elements*/
 .links {

@@ -32,33 +32,104 @@ var cards = [
 	},
 ];
 var cardsInPlay = [];
-
+var score = 1
 
 
 //Create checkForMatch function
 var checkForMatch = function(){
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		console.log("You found a match!");
+		alert("Congratulations!");
+		
+		
+		// create span to add as score
+		var createScoreSpan = document.createElement("span");
+		var scoreText = document.createTextNode(score);
+		createScoreSpan.appendChild(scoreText);
+
+		var addScore = document.getElementById("gameScore");
+		addScore.appendChild(createScoreSpan);
+
+		console.log(score);
+
+		score += 1
+		
 	} 
 	else {
 		alert("Sorry, try again.");
 		console.log("Sorry, try again.");	
+		
 	}
 };
 
 //Create flipCard function
-var flipCard = function(cardId){
+var flipCard = function(){
+	var cardId = this.getAttribute('data-id');
 	console.log("User flipped " + cards[cardId].rank);
 	console.log(cards[cardId].suit)
 	console.log(cards[cardId].cardImage)
 	cardsInPlay.push(cards[cardId].rank);
-	if (cardsInPlay.length === 2){
+	this.setAttribute('src', cards[cardId].cardImage);
+	
+	if (cardsInPlay.length < 2){
+		console.log("keep drawing");
+	} else if (cardsInPlay.length === 2){
 		checkForMatch();
-	};
+	}
+	else{
+		alert('YOU HAVE CLICKED TOO MANY CARDS');
+		remakeBoard();
+	}
 };
 
-flipCard(0);
-flipCard(2);
+
+
+// Create createBoard function
+var createBoard = function (){
+	for (var i = 0; i < cards.length; i++) {
+    	var cardElement = document.createElement('img');
+    	cardElement.setAttribute('src', 'images/back.png');
+    	cardElement.setAttribute('data-id', i);
+    	cardElement.addEventListener('click', flipCard);
+    	document.getElementById('game-board').appendChild(cardElement);
+	}
+};
+
+var remakeBoard = function (){
+	var removeCards = document.getElementById('game-board');
+	removeCards.innerHTML = "";
+	var removeScore = document.getElementById('gameScore');
+	removeScore.innerHTML = "";
+	cardsInPlay = [];
+
+
+	for (var i = 0; i < cards.length; i++) {
+    	var cardElement = document.createElement('img');
+    	cardElement.setAttribute('src', 'images/back.png');
+    	cardElement.setAttribute('data-id', i);
+    	cardElement.addEventListener('click', flipCard);
+    	document.getElementById('game-board').appendChild(cardElement);
+	}
+
+};
+
+
+
+document.getElementById('reset').addEventListener('click', remakeBoard);
+
+createBoard();
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// if (cardsInPlay.length === 2)
 	// if (cardsInPlay[0] === cardsInPlay[1])
