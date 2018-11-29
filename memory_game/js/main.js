@@ -32,33 +32,35 @@ var cards = [
 	},
 ];
 var cardsInPlay = [];
-var score = 1
-
+//var score = 1
+var score = [0];
 
 //Create checkForMatch function
 var checkForMatch = function(){
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		console.log("You found a match!");
-		alert("Congratulations!");
-		
+		setTimeout(()=>alert("Congratulations!"), 500);
+		setTimeout(()=>remakeBoard(), 500);
+		score.unshift((score[0]) + 1);
 		
 		// create span to add as score
-		var createScoreSpan = document.createElement("span");
-		var scoreText = document.createTextNode(score);
-		createScoreSpan.appendChild(scoreText);
+		// var createScoreSpan = document.createElement("span");
+		// var scoreText = document.createTextNode(score[0]);
+		// createScoreSpan.appendChild(scoreText);
 
 		var addScore = document.getElementById("gameScore");
-		addScore.appendChild(createScoreSpan);
+		addScore.innerHTML = score[0];
 
-		console.log(score);
-
-		score += 1
 		
+		console.log(score);xs
 	} 
 	else {
-		alert("Sorry, try again.");
-		console.log("Sorry, try again.");	
 		
+		console.log("Sorry, try again.");	
+		setTimeout(()=>remakeBoard(), 500);
+		setTimeout(()=>alert("Sorry, try again."), 500);
+		
+
 	}
 };
 
@@ -75,10 +77,6 @@ var flipCard = function(){
 		console.log("keep drawing");
 	} else if (cardsInPlay.length === 2){
 		checkForMatch();
-	}
-	else{
-		alert('YOU HAVE CLICKED TOO MANY CARDS');
-		remakeBoard();
 	}
 };
 
@@ -98,8 +96,8 @@ var createBoard = function (){
 var remakeBoard = function (){
 	var removeCards = document.getElementById('game-board');
 	removeCards.innerHTML = "";
-	var removeScore = document.getElementById('gameScore');
-	removeScore.innerHTML = "";
+	// var removeScore = document.getElementById('gameScore');
+	// removeScore.innerHTML = "";
 	cardsInPlay = [];
 
 
